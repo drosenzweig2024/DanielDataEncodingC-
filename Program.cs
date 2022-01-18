@@ -1,34 +1,44 @@
-﻿
-using System;
-
+﻿using System;
 namespace DanielDataEncodingC_
 {
     class Program
     {
         static void Main(string[] args)
         {
-           char ch;
-           ch = 'A';
-           Console.WriteLine($"ch is the storing value: {ch}");
+            string filePath = args[0];
+            Console.WriteLine($"Loading '{filePath}'.");
 
-           int ch_decimal;
-           ch_decimal = ch;
-           Console.WriteLine($"The decimal Value of ch is: {ch_decimal}");
+            Cipher cipher;
+            cipher = new Cipher(5);
 
-           int ToConvert;
-           Console.WriteLine("Enter An Integer: ");
-           ToConvert = int.Parse(Console.ReadLine());
+            Cipher cipher2;
+            cipher2 = new Cipher(3);
 
-           char asChar;
-           asChar = (char)ToConvert;
-           Console.WriteLine($"The integer {ToConvert} cast to a char {asChar}");
+            string encrypted;
+            encrypted = cipher.Encrypt("rosebud");
+            //Console.WriteLine($"The encrypted message is: '{encrypted}'");
 
-           char b;
-           b = (char) ('A' + 1);
-           Console.WriteLine($"'a' + 1 = {b}");
+            string decrypted;
+            decrypted = cipher.Decrypt(encrypted);
+            //Console.WriteLine($"The decrypted message is: '{decrypted}'");
+
+            string message;
+            message = System.IO.File.ReadAllText(filePath);
+            //Console.WriteLine($"The encrypted message is: '{message}'.");
+
+            //decrypted = cipher2.Decrypt(message); 
+            //Console.WriteLine($"The decrypted message is: '{decrypted}'");
+            int shift;
+            shift = 1;
+            while (shift <= 10)
+            {
+                Cipher cipher3;
+                cipher3 = new Cipher(shift);
+                decrypted = cipher3.Decrypt(message);
+                Console.WriteLine($"The decrypted message is: '{decrypted}'");
+                shift += 1;
             }
-
 
         }
     }
-
+}
