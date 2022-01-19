@@ -3,7 +3,7 @@ namespace DanielDataEncodingC_
 {
     class Program
     {
-        static void Main(string[] args)
+         static void Main(string[] args)
         {
             string filePath = args[0];
             Console.WriteLine($"Loading '{filePath}'.");
@@ -26,8 +26,9 @@ namespace DanielDataEncodingC_
             message = System.IO.File.ReadAllText(filePath);
             //Console.WriteLine($"The encrypted message is: '{message}'.");
 
-            //decrypted = cipher2.Decrypt(message); 
+            //decrypted = cipher2.Decrypt(message);
             //Console.WriteLine($"The decrypted message is: '{decrypted}'");
+
             int shift;
             shift = 1;
             while (shift <= 10)
@@ -38,7 +39,6 @@ namespace DanielDataEncodingC_
                 Console.WriteLine($"The decrypted message is: '{decrypted}'");
                 shift += 1;
             }
-
         }
     }
 }
